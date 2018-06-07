@@ -1,0 +1,50 @@
+{
+  "name": "mongoose-seeder",
+  "version": "0.1.0",
+  "description": "A small seeding library for mongoose, used primarily to make writing unit tests easier",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel -s inline -d lib -w src",
+    "build": "babel -s inline -d lib src",
+    "test": "mocha ./test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesseBarron/mongoose-Seeder.git"
+  },
+  "keywords": [
+    "mongoose",
+    "seeder",
+    "tests",
+    "utility"
+  ],
+  "author": "Jesse Barron",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JesseBarron/mongoose-Seeder/issues"
+  },
+  "homepage": "https://github.com/JesseBarron/mongoose-Seeder#readme",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "mongodb": "^3.0.10",
+    "mongoose": "^5.1.4",
+    "webpack": "^4.11.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint-plugin-import": "^2.12.0",
+    "faker": "^4.1.0",
+    "flow-bin": "^0.73.0",
+    "mocha": "^5.2.0"
+  }
+}

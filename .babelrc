@@ -1,0 +1,6 @@
+{
+    "presets": ["env", "stage-1", "flow"],
+    "plugins": [
+        "transform-runtime"
+    ]
+}
