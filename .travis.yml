@@ -7,6 +7,7 @@ install:
   - npm install
 
 script:
+  - NODE_ENV = 'TRAVIS'
   - npm test
 
 services:

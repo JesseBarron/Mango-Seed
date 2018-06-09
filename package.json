@@ -6,7 +6,7 @@
   "scripts": {
     "start": "babel -s inline -d lib -w src",
     "build": "babel -s inline -d lib src",
-    "test": "mocha ./test/*.test.js"
+    "test": "mocha ./test/*.test.js --exit"
   },
   "repository": {
     "type": "git",

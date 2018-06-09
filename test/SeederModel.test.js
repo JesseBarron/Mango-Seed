@@ -11,8 +11,9 @@ describe('SeederModel', () => {
     email: faker.internet.email,
     password: faker.internet.password,
   };
-  beforeEach(() => {
+  beforeEach((done) => {
     testCollection = new SeederModel({ name: 'User', model: User });
+    done();
   });
 
   afterEach(async () => {
