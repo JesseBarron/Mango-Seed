@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const url = 'mongodb://localhost:27017/SeederTest';
+const url = 'mongodb://127.0.0.1:27017/SeederTest';
 mongoose.connect(url);
 const db = mongoose.connection;
 

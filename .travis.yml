@@ -5,6 +5,9 @@ node_js:
 
 install:
   - npm install
-  
+
 script:
   - npm test
+
+  services:
+  - mongodb
