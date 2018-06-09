@@ -1,5 +1,5 @@
 {
-  "name": "mongoose-seeder",
+  "name": "mango-seed",
   "version": "0.1.0",
   "description": "A small seeding library for mongoose, used primarily to make writing unit tests easier",
   "main": "index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JesseBarron/mongoose-Seeder.git"
+    "url": "git+https://github.com/JesseBarron/mango-seed.git"
   },
   "keywords": [
     "mongoose",
@@ -21,9 +21,9 @@
   "author": "Jesse Barron",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JesseBarron/mongoose-Seeder/issues"
+    "url": "https://github.com/JesseBarron/mango-seed/issues"
   },
-  "homepage": "https://github.com/JesseBarron/mongoose-Seeder#readme",
+  "homepage": "https://github.com/JesseBarron/mango-seed#readme",
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "eslint": "^4.19.1",
