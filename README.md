@@ -1,4 +1,7 @@
-# Mango-Seed
+
+# Mango-Seed    
+[![Build Status](https://travis-ci.org/JesseBarron/Mango-Seed.svg?branch=master)](https://travis-ci.org/JesseBarron/Mango-Seed)
+
 Seeder is a simple utility that allows for quick an easy seeding when writing unit test when using mongoose!
 
 ## Setup:
