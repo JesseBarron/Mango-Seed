@@ -5,13 +5,13 @@ const { Seeder } = require('../../src');
 
 const mongooseSeeder = new Seeder();
 
-const collections = [
-  { name: 'User', collection: User },
-  { name: 'Article', collection: Article },
-  { name: 'Project', collection: Project },
+const models = [
+  { name: 'User', model: User },
+  { name: 'Article', model: Article },
+  { name: 'Project', model: Project },
 ];
 
-mongooseSeeder.addManyCollections(collections);
+mongooseSeeder.addManyModels(models);
 
 module.exports = {
   Article,

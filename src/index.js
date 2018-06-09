@@ -1,7 +1,7 @@
 const Seeder = require('./Seeder');
-const SeederCollection = require('./SeederCollection');
+const SeederModel = require('./SeederModel');
 
 module.exports = {
   Seeder,
-  SeederCollection,
+  SeederModel,
 };

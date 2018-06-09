@@ -1,42 +1,66 @@
-const SeederCollection = require('./SeederCollection');
-
+const SeederModel = require('./SeederModel');
+/**
+ * Seeder Class
+ * @class Seeder
+ * @constructor
+ * @property {Object} models - object holding the SeederModel project
+ */
 class Seeder {
   constructor() {
-    this.collections = {};
+    this.models = {};
   }
-  addManyCollections(collections) {
-    collections.forEach((e) => {
-      if (!this.collections[e.name]) {
-        this[e.name] = new SeederCollection(e);
-        this.collections[e.name] = { name: e.name, collection: this[e.name] };
+  /**
+   * 
+   * @param {array} models - Array of onjects containing the names and mongoose model associated with it.
+   */
+  addManyModels(models) {
+    models.forEach((e) => {
+      if (!this.models[e.name]) {
+        this[e.name] = new SeederModel(e);
+        this.models[e.name] = { name: e.name, collection: this[e.name] };
       }
     });
-    return this.collections;
+    return this.models;
   }
-  addCollection({ name, collection }) {
-    if (!this.collections[name]) {
-      this[name] = new SeederCollection({ name, collection });
-      this.collections[name] = { name, collection: this[name] };
+  /**
+   * 
+   * @param {object} param0 - containing the name and mongoose schema 
+   */
+  addModel({ name, model }) {
+    if (!this.models[name]) {
+      console.log(name, 'HERE')
+      this[name] = new SeederModel({ name, model });
+      this.models[name] = { name, model: this[name] };
     }
     return this[name];
   }
-  removeCollection(name) {
-    const collection = this.name;
+  /**
+   * 
+   * @param {strin} name - Name of the model to remove
+   */
+  removeModel(name) {
+    const model = this.name;
     delete this[name];
-    delete this.collections[name];
-    return collection;
+    delete this.models[name];
+    return model;
   }
-  removeAllCollections() {
-    const collections = Object.keys(this.collections);
-    for (let i = 0; i < collections.length; i++) {
-      let collName = collections[i];
-      delete this[collName];
-      delete this.collections[collName];
+  /**
+   * Removes all the models from this instance
+   */
+  removeAllModels() {
+    const models = Object.keys(this.models);
+    for (let i = 0; i < models.length; i++) {
+      let modelName = models[i];
+      delete this[modelName];
+      delete this.models[modelName];
     }
-    return this.collections;
+    return this.models;
   }
+  /**
+   * Returns all the models in this instance.f
+   */
   log() {
-    return this.collections;
+    return this.models;
   }
 }
 

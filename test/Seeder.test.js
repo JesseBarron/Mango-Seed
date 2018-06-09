@@ -1,4 +1,4 @@
-const { Seeder, SeederCollection } = require('../src');
+const { Seeder, SeederModel } = require('../src');
 const {
   User,
   Article,
@@ -10,10 +10,10 @@ const {
 
 describe('Seeder Class', () => {
   let testSeeder;
-  const collections = [
-    { name: 'User', collection: User },
-    { name: 'Article', collection: Article },
-    { name: 'Project', collection: Project },
+  const models = [
+    { name: 'User', model: User },
+    { name: 'Article', model: Article },
+    { name: 'Project', model: Project },
   ];
 
   beforeEach(() => {
@@ -25,54 +25,64 @@ describe('Seeder Class', () => {
   });
 
   it('Should be have a property called collection that\'s an empty array', () => {
-    expect(testSeeder).to.haveOwnProperty('collections');
+    expect(testSeeder).to.haveOwnProperty('models');
   });
 
-  describe('addManyCollections and removaAllCollections', () => {
+  describe('addManyModels and removaAllmodels', () => {
     beforeEach(() => {
-      testSeeder.addManyCollections(collections);
+      testSeeder.addManyModels(models);
     });
 
-    it('log should return all the collections of the Seeder instance', () => {
+    it('log should return all the models of the Seeder instance', () => {
       expect(Object.keys(testSeeder.log()).length).to.equal(3);
     })
-    it('addManyCollections should be able to add many collections to the Seeder class', () => {
-      const collectionNames = Object.keys(testSeeder.collections);
-      expect(collectionNames.length).to.equal(3);
+    it('addManyModels should be able to add many models to the Seeder class', () => {
+      const modelNames = Object.keys(testSeeder.models);
+      expect(modelNames.length).to.equal(3);
 
-      collectionNames.forEach((name) => {
-        expect(testSeeder.collections[name]).to.exist;
-        expect(testSeeder.collections[name].collection).to.be.an.instanceof(SeederCollection);
+      modelNames.forEach((name) => {
+        expect(testSeeder.models[name]).to.exist;
+        expect(testSeeder.models[name].collection).to.be.an.instanceof(SeederModel);
         expect(testSeeder[name]).to.exist;
       });
     });
-    it('removeAllCollections should remove all collections from this.collections and the class', () => {
-      testSeeder.removeAllCollections();
-      const collectionNames = Object.keys(testSeeder.collections);
-      expect(collectionNames.length).to.equal(0);
-      expect(testSeeder[collections[0].name]).to.not.exist;
+    it('removeAllModels should remove all models from this.models and the class', () => {
+      testSeeder.removeAllModels();
+      const modelNames = Object.keys(testSeeder.models);
+      expect(modelNames.length).to.equal(0);
+      expect(testSeeder[models[0].name]).to.not.exist;
     });
+    it('should persist docs to the database', async () => {
+      const userTemplate = {
+        name: 'jesse',
+        email: 'jesseB@goo',
+        password: '123',
+      };
+      testSeeder.User.setTemplate(userTemplate);
+      await testSeeder.User.create('user');
+      expect(testSeeder.User.documents.user.email).to.equal(userTemplate.email);
+    })
   });
-  describe('addCollection and removeCollection', () => {
+  describe('addModel and removeModel', () => {
     beforeEach(() => {
-      testSeeder.addCollection(collections[0]);
+      testSeeder.addModel(models[0]);
     });
 
-    it('addCollection should be able to add a single collection to the Seeder class', () => {
-      const collectionNames = Object.keys(testSeeder.collections);
-      expect(collectionNames.length).to.equal(1);
+    it('addModel should be able to add a single collection to the Seeder class', () => {
+      const modelNames = Object.keys(testSeeder.models);
+      expect(modelNames.length).to.equal(1);
 
-      collectionNames.forEach((name) => {
-        expect(testSeeder.collections[name].name).to.equal(collections[0].name);
-        expect(testSeeder.collections[name].collection).to.be.an.instanceof(SeederCollection);
+      modelNames.forEach((name) => {
+        expect(testSeeder.models[name].name).to.equal(models[0].name);
+        expect(testSeeder.models[name].model).to.be.an.instanceof(SeederModel);
         expect(testSeeder[name]).to.exist;
       });
     });
-    it('removeCollection should remove a specific collection', () => {
-      testSeeder.removeCollection(collections[0].name);
-      const collectionNames = Object.keys(testSeeder.collections);
-      expect(collectionNames.length).to.equal(0);
-      expect(testSeeder[collections[0].name]).to.not.exist;
+    it('removeModel should remove a specific collection', () => {
+      testSeeder.removeModel(models[0].name);
+      const modelNames = Object.keys(testSeeder.models);
+      expect(modelNames.length).to.equal(0);
+      expect(testSeeder[models[0].name]).to.not.exist;
     });
   });
 });
