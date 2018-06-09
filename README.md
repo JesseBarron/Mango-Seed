@@ -2,7 +2,7 @@
 # Mango-Seed    
 [![Build Status](https://travis-ci.org/JesseBarron/Mango-Seed.svg?branch=master)](https://travis-ci.org/JesseBarron/Mango-Seed)
 
-Seeder is a simple utility that allows for quick an easy seeding when writing unit test when using mongoose!
+Seeder is a simple utility for mongoose based applications that allows for quick an easy seeding when writing unit test!
 
 ## Setup:
 initialize a new Instance of Seeder and set the mongoose models.
@@ -41,7 +41,7 @@ seeder.addModel('user', User);
 ```
 Here we passed the string 'user'  to the seeder instance so we can access it like so:
 ```javascript
-seeder.user.create('admin', {admin: tue})
+seeder.user.create('admin', {admin: true})
 ```
 ## API <hr/>
  ### Templates:
@@ -89,14 +89,14 @@ const tajin = await seeder.user.create()
  
  * The second argument overiddes the properties set on the template
 */
-const tajin = await seeder.user.create('admin', {admin: tue, name: 'add-man'})
-//Returns { name: 'admin', doc:{ admin: ture, name: 'add-man' }}
+const tajin = await seeder.user.create('admin', {admin: true, name: 'add-man'})
+//Returns { name: 'admin', doc:{ admin: true, name: 'add-man' }}
 
 /*
  * With options passed
  * with the cache option set to false, the method won't cache the created document to the seeder.user.documents object.
 */
-const tajin = await seeder.user.create('admin', {admin: tue, name: 'add-man'}, {cache: false});
+const tajin = await seeder.user.create('admin', {admin: true, name: 'add-man'}, {cache: false});
 //returns {'created document'}
 ```
 ### Create Many Documents:
@@ -109,7 +109,7 @@ const tajin = await seeder.user.create('admin', {admin: tue, name: 'add-man'}, {
    * @param {object} options - Needs work
    */
   const userArr = await seeder.user.createMany(2, 'admins', {admin: true});
-  // Returns {name: 'admins', docs:[{documents}]
+  // Returns {name: 'admins', docs:[{documents}]}
 ```
 ### Find Document:
 ```javascript
