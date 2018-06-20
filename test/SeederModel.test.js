@@ -66,8 +66,8 @@ describe('SeederModel', () => {
 
       expect(testCollection.documents).to.haveOwnProperty('nonAdmin');
       expect(testCollection.documents).to.haveOwnProperty('admin');
-      expect(testCollection.documents.nonAdmin).to.equal(createdDoc.doc);
-      expect(testCollection.documents.admin).to.equal(createdDoc2.doc);
+      expect(testCollection.documents.nonAdmin.doc).to.equal(createdDoc.doc);
+      expect(testCollection.documents.admin.doc).to.equal(createdDoc2.doc);
     });
     it('should be able to create/persist multiple documents to the DB', async () => {
       const docArr = await testCollection.createMany(2, 'admins', { admin: true, password: '123' });
