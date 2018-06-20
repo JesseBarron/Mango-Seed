@@ -38,6 +38,17 @@ const User = mongoose.model('User', userSchema);
 
 const seeder = new Seeder();
 seeder.addModel('user', User);
+/*
+  To add many models at once
+*/
+
+const models = {
+  { name: 'user', model: User },
+  { name: 'post', model: Post },
+  { name: 'project', model: Project },
+};
+
+seeder.addManyModels(models)
 ```
 Here we passed the string 'user'  to the seeder instance so we can access it like so:
 ```javascript
