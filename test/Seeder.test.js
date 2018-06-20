@@ -60,7 +60,7 @@ describe('Seeder Class', () => {
       };
       testSeeder.User.setTemplate(userTemplate);
       await testSeeder.User.create('user');
-      expect(testSeeder.User.documents.user.email).to.equal(userTemplate.email);
+      expect(testSeeder.User.documents.user.doc.email).to.equal(userTemplate.email);
     })
   });
   describe('addModel and removeModel', () => {

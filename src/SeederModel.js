@@ -57,8 +57,8 @@ class SeederModel {
       const createdDoc = await this.model.create(docData);
       if (options.cache) {
         const docName = name || createdDoc._id;
-        this.documents[docName] = createdDoc;
-        return { name: docName, doc: createdDoc };
+        this.documents[docName] = { doc: createdDoc, data: docData };
+        return { name: docName, doc: createdDoc, data: docData };
       }
       return createdDoc;
     } catch (e) {
